@@ -1,7 +1,11 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField
-from wtforms.validators import InputRequired
+from wtforms import StringField, TextAreaField
+from wtforms.validators import InputRequired, Length
 from collections import namedtuple
+
+
+CAT_FIELD_LENGTH = 16
+COVER_FIELD_LENGTH = 40
 
 
 Knowledge_Tuple = namedtuple('Knowledge_Tuple', ['cover', 'cat', 'content'])
@@ -9,6 +13,12 @@ Knowledge_Tuple = namedtuple('Knowledge_Tuple', ['cover', 'cat', 'content'])
 
 class SearchForm(FlaskForm):
     search = StringField('search', validators=[InputRequired()])
+
+
+class CreateForm(FlaskForm):
+    cover = StringField('Note Cover', validators=[InputRequired(), Length(max=COVER_FIELD_LENGTH)])
+    cat = StringField('Note Category', validators=[InputRequired(), Length(max=CAT_FIELD_LENGTH)])
+    content = TextAreaField('Note Content', validators=[InputRequired()])
 
 
 from sqlalchemy import create_engine
@@ -35,9 +45,9 @@ Base.query = DB_Session.query_property()
 
 class Knowledge(Base):
     __tablename__ = 'knowledge'
-    cover = Column(String(30), primary_key=True)
+    cover = Column(String(COVER_FIELD_LENGTH), primary_key=True)
+    cat = Column(String(CAT_FIELD_LENGTH))
     content = Column(Text)
-    cat = Column(String(10))
 
     def __init__(self, cover=None, content=None, cat=None):
         self.cover = cover

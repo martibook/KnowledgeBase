@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+
+{% block page_title %}
+    <title>Create New Note</title>
+{% endblock %}
+
+{% block headpart %}
+    <link rel="stylesheet" href={{ url_for('static', filename='css/bootstrap.css') }}>
+    <link rel="stylesheet" href={{ url_for('static', filename='css/animate.css') }}>
+    <link rel="stylesheet" href={{ url_for('static', filename='css/style.css') }}>
+    <link rel="stylesheet" href={{ url_for('static', filename='css/owl.carousel.min.css') }}>
+{% endblock %}
+
+
+{% block mainpart %}
+
+    <section class="site-section">
+        <div class="container">
+            <div class="col-lg-6 col-md-12 mb-5 element-animate">
+                <h3 class="mb-5">Create A Piece of Note.</h3>
+                <form action="/created" method="post">
+                    {{ form.csrf_token }}
+                    <div class="row">
+                        <div class="col-md-12 form-group">
+                            {{ form.cover.label }}
+                            {{ form.cover(autocomplete="off", class="form-control") }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 form-group">
+                            {{ form.cat.label }}
+                            {{ form.cat(autocomplete="off", class="form-control") }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 form-group">
+                            {{ form.content.label }}
+                            {{ form.content(autocomplete="off", class="form-control", cols="30", rows="10") }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 form-group">
+                            <input type="submit" value="Create Note" class="btn btn-primary">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
+
+
+{% block lastpart %}
+    <script src={{ url_for('static', filename='js/jquery-3.2.1.min.js') }}></script>
+    <script src={{ url_for('static', filename='js/jquery-migrate-3.0.0.js') }}></script>
+    <script src={{ url_for('static', filename='js/popper.min.js') }}></script>
+    <script src={{ url_for('static', filename='js/bootstrap.min.js') }}></script>
+    <script src={{ url_for('static', filename='js/owl.carousel.min.js') }}></script>
+    <script src={{ url_for('static', filename='js/jquery.waypoints.min.js') }}></script>
+    <script src={{ url_for('static', filename='js/jquery.stellar.min.js') }}></script>
+    <script src={{ url_for('static', filename='js/main.js') }}></script>
+{% endblock %}

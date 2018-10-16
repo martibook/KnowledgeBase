@@ -1,18 +1,35 @@
 {% extends "base.html" %}
 
 
+{% block page_title %}
+    <title>Search Results</title>
+{% endblock %}
+
 {% block headpart %}
     <link rel="stylesheet" href={{ url_for('static', filename='css/bootstrap.css') }}>
     <link rel="stylesheet" href={{ url_for('static', filename='css/animate.css') }}>
     <link rel="stylesheet" href={{ url_for('static', filename='css/style.css') }}>
 {% endblock %}
 
+{% block s006 %}
+    <form method="post" action="/search">
+        <div class="inner-form">
+            <div class="input-field">
+                {{ form.csrf_token }}
+                {{ form.search(autocomplete="off") }}
+            </div>
+        </div>
+    </form>
+{% endblock %}
+
 
 {% block mainpart %}
     <section class="slider-wrap site-section">
         <div class="container">
+
             {% for row in range(row_range) %}
                 <div class="row">
+
                 {% if item_list|length - 3 * row >= 3 %}
                     {% for col in range(3) %}
                         <div class="col-md-4 element-animate ">
@@ -24,6 +41,7 @@
                             </a>
                         </div>
                     {% endfor %}
+
                 {% elif item_list|length - 3 * row >=2 %}
                 {% for col in range(2) %}
                         <div class="col-md-4 element-animate ">
@@ -35,6 +53,7 @@
                             </a>
                         </div>
                     {% endfor %}
+
                 {% else %}
                 {% for col in range(1) %}
                         <div class="col-md-4 element-animate ">
@@ -48,13 +67,8 @@
                     {% endfor %}
                 {% endif %}
                 </div>
-
             {% endfor %}
 
-            <div class="row element-animate pt-5">
-                <div class="col-6 text-left mb-3"><a href="#" class="btn btn-primary">Prev</a></div>
-                <div class="col-6 text-right"><a href="#" class="btn btn-primary">Next</a></div>
-            </div>
         </div>
     </section>
 {% endblock %}
