@@ -9,6 +9,7 @@ COVER_FIELD_LENGTH = 40
 
 
 Knowledge_Tuple = namedtuple('Knowledge_Tuple', ['cover', 'cat', 'content'])
+Addr_Knowledge_Tuple = namedtuple('Knowledge_Tuple', ['cover', 'cat', 'content', 'addr'])
 
 
 class SearchForm(FlaskForm):

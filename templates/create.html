@@ -16,10 +16,10 @@
 {% block mainpart %}
 
     <section class="site-section">
-        <div class="container">
-            <div class="col-lg-6 col-md-12 mb-5 element-animate">
+        <div class="container bg-white pl-lg-5 pb-lg-5 pt-lg-5 pr-lg-5">
+            <div class="col-md-12 mb-5 element-animate">
                 <h3 class="mb-5">Create A Piece of Note.</h3>
-                <form action="/created" method="post">
+                <form action="/create_item" method="post">
                     {{ form.csrf_token }}
                     <div class="row">
                         <div class="col-md-12 form-group">
