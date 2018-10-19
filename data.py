@@ -13,7 +13,7 @@ Addr_Knowledge_Tuple = namedtuple('Knowledge_Tuple', ['cover', 'cat', 'content',
 
 
 class SearchForm(FlaskForm):
-    search = StringField('search', validators=[InputRequired()])
+    search = StringField('search', validators=[InputRequired(), Length(max=COVER_FIELD_LENGTH)])
 
 
 class CreateForm(FlaskForm):

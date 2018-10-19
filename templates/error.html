@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+
+{% block page_title %}
+    <title>{{ error.cover }}</title>
+{% endblock %}
+
+{% block headpart %}
+    <link rel="stylesheet" href={{ url_for('static', filename='css/bootstrap.css') }}>
+    <link rel="stylesheet" href={{ url_for('static', filename='css/animate.css') }}>
+    <link rel="stylesheet" href={{ url_for('static', filename='css/style.css') }}>
+    <link rel="stylesheet" href={{ url_for('static', filename='css/owl.carousel.min.css') }}>
+{% endblock %}
+
+
+{% block s006 %}
+    <form method="post" action="/search">
+        <div class="inner-form">
+            <div class="input-field">
+                {{ form.csrf_token }}
+                {{ form.search(autocomplete="off") }}
+            </div>
+        </div>
+    </form>
+{% endblock %}
+
+
+{% block mainpart %}
+
+    <section class="site-section">
+        <div class="container bg-white pl-lg-5 pb-lg-5 pt-lg-5 pr-lg-5">
+        <div class="text-center">
+            <h3 class="mb-5">{{ error.cover }}</h3>
+            <p>{{ error.info }}</p>
+        </div>
+        </div>
+    </section>
+
+{% endblock %}
+
+
+{% block lastpart %}
+    <script src={{ url_for('static', filename='js/jquery-3.2.1.min.js') }}></script>
+    <script src={{ url_for('static', filename='js/jquery-migrate-3.0.0.js') }}></script>
+    <script src={{ url_for('static', filename='js/popper.min.js') }}></script>
+    <script src={{ url_for('static', filename='js/bootstrap.min.js') }}></script>
+    <script src={{ url_for('static', filename='js/owl.carousel.min.js') }}></script>
+    <script src={{ url_for('static', filename='js/jquery.waypoints.min.js') }}></script>
+    <script src={{ url_for('static', filename='js/jquery.stellar.min.js') }}></script>
+    <script src={{ url_for('static', filename='js/main.js') }}></script>
+{% endblock %}
