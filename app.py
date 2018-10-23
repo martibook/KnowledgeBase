@@ -121,8 +121,6 @@ def operation_create(form):
 def operation_update(form):
     db_session = DB_Session()
     try:
-        db_session.begin(subtransactions=True)
-
         old_cover, old_cat, old_content = session['cover'], session['cat'], session['content']
         old_knowledge = db_session.query(Knowledge).filter(Knowledge.cover==old_cover).filter(Knowledge.cat==old_cat).first()
         db_session.delete(old_knowledge)
