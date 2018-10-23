@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, TextAreaField
+from wtforms import StringField, TextAreaField, PasswordField
 from wtforms.validators import InputRequired, Length
 from collections import namedtuple
 
@@ -17,6 +17,7 @@ class SearchForm(FlaskForm):
 
 
 class CreateForm(FlaskForm):
+    password = PasswordField('Need A Password To Go Ahead', validators=[InputRequired()])
     cover = StringField('Note Cover', validators=[InputRequired(), Length(max=COVER_FIELD_LENGTH)])
     cat = StringField('Note Category', validators=[InputRequired(), Length(max=CAT_FIELD_LENGTH)])
     content = TextAreaField('Note Content', validators=[InputRequired()])
@@ -45,9 +46,10 @@ Base.query = DB_Session.query_property()
 
 
 class Knowledge(Base):
+
     __tablename__ = 'knowledge'
     cover = Column(String(COVER_FIELD_LENGTH), primary_key=True)
-    cat = Column(String(CAT_FIELD_LENGTH))
+    cat = Column(String(CAT_FIELD_LENGTH), primary_key=True)
     content = Column(Text)
 
     def __init__(self, cover=None, content=None, cat=None):
@@ -57,6 +59,20 @@ class Knowledge(Base):
 
     def __repr__(self):
         return """{cover}\n{cat}\n{content}""".format(cover=self.cover, content=self.content, cat=self.cat)
+
+
+class Users(Base):
+
+    __tablename__ = 'users'
+    username = Column(String(), primary_key=True)
+    password = Column(String(), primary_key=True)
+
+    def __init__(self, username=None, password=None):
+        self.username = username
+        self.password = password
+
+    def __repr__(self):
+        return """{username}\n{password}""".format(username=self.username, password=self.password)
 
 
 def init_db():

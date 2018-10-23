@@ -2,7 +2,7 @@
 
 
 {% block page_title %}
-    <title>Create A New Piece of Note</title>
+    <title>Update A Piece of Note</title>
 {% endblock %}
 
 {% block headpart %}
@@ -18,8 +18,8 @@
     <section class="site-section">
         <div class="container bg-white pl-lg-5 pb-lg-5 pt-lg-5 pr-lg-5">
             <div class="col-md-12 mb-5 element-animate">
-                <h3 class="mb-5">Create A Piece of Note.</h3>
-                <form action="/operation/create" method="post">
+                <h3 class="mb-5">Update A Piece of Note.</h3>
+                <form action="/operation/update" method="post">
                     {{ form.csrf_token }}
                     <div class="row">
                         <div class="col-md-12 form-group">
@@ -47,7 +47,7 @@
                     </div>
                     <div class="row">
                         <div class="col-md-6 form-group">
-                            <input type="submit" value="Create Note" class="btn btn-primary">
+                            <input type="submit" value="Update Note" class="btn btn-primary">
                         </div>
                     </div>
                 </form>
