@@ -20,29 +20,29 @@
             <div class="col-md-12 mb-5 element-animate">
                 <h3 class="mb-5">Create A Piece of Note.</h3>
                 <form action="/operation/create" method="post">
-                    {{ form.csrf_token }}
+                    {{ create_form.csrf_token }}
                     <div class="row">
                         <div class="col-md-12 form-group">
-                            {{ form.password.label(style="color:red") }}
-                            {{ form.password(class="form-control") }}
+                            {{ create_form.password.label(style="color:red") }}
+                            {{ create_form.password(class="form-control") }}
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12 form-group">
-                            {{ form.cover.label }}
-                            {{ form.cover(autocomplete="off", class="form-control") }}
+                            {{ create_form.cover.label }}
+                            {{ create_form.cover(autocomplete="off", class="form-control") }}
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12 form-group">
-                            {{ form.cat.label }}
-                            {{ form.cat(autocomplete="off", class="form-control") }}
+                            {{ create_form.cat.label }}
+                            {{ create_form.cat(autocomplete="off", class="form-control") }}
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12 form-group">
-                            {{ form.content.label }}
-                            {{ form.content(autocomplete="off", class="form-control", cols="30", rows="10") }}
+                            {{ create_form.content.label }}
+                            {{ create_form.content(autocomplete="off", class="form-control", cols="30", rows="10") }}
                         </div>
                     </div>
                     <div class="row">

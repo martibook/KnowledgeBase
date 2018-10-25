@@ -11,17 +11,6 @@
     <link rel="stylesheet" href={{ url_for('static', filename='css/style.css') }}>
 {% endblock %}
 
-{% block s006 %}
-    <form method="post" action="/search">
-        <div class="inner-form">
-            <div class="input-field">
-                {{ form.csrf_token }}
-                {{ form.search(autocomplete="off") }}
-            </div>
-        </div>
-    </form>
-{% endblock %}
-
 
 {% block mainpart %}
     <section class="slider-wrap site-section">
