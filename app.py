@@ -60,14 +60,18 @@ def search():
         return present_error(error)
 
 
-@app.route('/preparation')
-def preparation():
+@app.route('/preparation_create')
+def preparation_create():
+    form = CreateForm()
+    return render_template('create.html', form=form)
+
+
+@app.route('/preparation_update')
+def preparation_update():
     form = CreateForm()
     if all(('cover' in session, 'cat' in session, 'content' in session)):
         form.cover.data, form.cat.data, form.content.data = session['cover'], session['cat'], session['content']
-        return render_template('update.html', form=form)
-    else:
-        return render_template('create.html', form=form)
+    return render_template('update.html', form=form)
 
 
 @app.route('/item/<cover>/<cat>')
