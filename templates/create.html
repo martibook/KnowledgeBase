@@ -15,8 +15,8 @@
 
 {% block mainpart %}
 
-    <section class="site-section">
-        <div class="container bg-white pl-lg-5 pb-lg-5 pt-lg-5 pr-lg-5">
+    <section id="outer" class="site-section">
+        <div id="container" class="container bg-white pl-lg-5 pb-lg-5 pt-lg-5 pr-lg-5">
             <div class="col-md-12 mb-5 element-animate">
                 <h3 class="mb-5">Create A Piece of Note.</h3>
                 <form action="/operation/create" method="post">
@@ -51,9 +51,26 @@
                         </div>
                     </div>
                 </form>
+                <div id="cancel" onclick="javascript:cancel()"
+                     style="width: 50px; height: 50px; position: absolute; top: -60px; right: -60px;">
+                    <svg t="1540542993028" class="icon" style="" viewBox="0 0 1024 1024" version="1.1"
+                         xmlns="http://www.w3.org/2000/svg" p-id="3730" xmlns:xlink="http://www.w3.org/1999/xlink"
+                         width="48" height="48">
+                        <path d="M512 0C230.4 0 0 230.4 0 512 0 793.6 230.4 1024 512 1024 793.6 1024 1024 793.6 1024 512 1024 230.4 793.6 0 512 0L512 0ZM768 696.32 696.32 768 512 583.68 327.68 768 256 696.32 440.32 512 256 327.68 327.68 256 512 440.32 696.32 256 768 327.68 583.68 512 768 696.32 768 696.32Z"
+                              p-id="3731" fill="#1296db"></path>
+                    </svg>
+                </div>
             </div>
         </div>
     </section>
+
+    <script>
+        function cancel() {
+            var parent = document.getElementById('outer');
+            var form = document.getElementById('container');
+            parent.removeChild(form);
+        }
+    </script>
 
 {% endblock %}
 
