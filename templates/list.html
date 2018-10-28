@@ -22,7 +22,7 @@
                 {% if item_list|length - 3 * row >= 3 %}
                     {% for col in range(3) %}
                         <div class="col-md-4 element-animate ">
-                            <a href="{{ item_list[3 * row + col].addr }}" class="img-bg" style="background-image: url('../static/images/img_2.jpg')">
+                            <a href="{{ item_list[3 * row + col].addr }}" class="img-bg" style="background-image: url('../static/images/item_bg.jpg')">
                                 <div class="text">
                                     <h2>{{ item_list[3 * row + col].cover }}</h2>
                                     <p>{{ item_list[3 * row + col].cat }}</p>
@@ -34,7 +34,7 @@
                 {% elif item_list|length - 3 * row >=2 %}
                 {% for col in range(2) %}
                         <div class="col-md-4 element-animate ">
-                            <a href="{{ item_list[3 * row + col].addr }}" class="img-bg" style="background-image: url('../static/images/img_2.jpg')">
+                            <a href="{{ item_list[3 * row + col].addr }}" class="img-bg" style="background-image: url('../static/images/item_bg.jpg')">
                                 <div class="text">
                                     <h2>{{ item_list[3 * row + col].cover }}</h2>
                                     <p>{{ item_list[3 * row + col].cat }}</p>
@@ -46,7 +46,7 @@
                 {% else %}
                 {% for col in range(1) %}
                         <div class="col-md-4 element-animate ">
-                            <a href="{{ item_list[3 * row + col].addr }}" class="img-bg" style="background-image: url('../static/images/img_2.jpg')">
+                            <a href="{{ item_list[3 * row + col].addr }}" class="img-bg" style="background-image: url('../static/images/item_bg.jpg')">
                                 <div class="text">
                                     <h2>{{ item_list[3 * row + col].cover }}</h2>
                                     <p>{{ item_list[3 * row + col].cat }}</p>
