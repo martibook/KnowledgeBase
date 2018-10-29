@@ -234,7 +234,7 @@ header .navbar.navbar-light .nav-link.active {
   transition: .3s all ease;
 }
 
-.feature-destination .img-bg .text, .slider-wrap .img-bg .text {
+.feature-destination .img-bg .item_text, .slider-wrap .img-bg .item_text {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -245,7 +245,7 @@ header .navbar.navbar-light .nav-link.active {
   transform: translate(-50%, -50%);
 }
 
-.feature-destination .img-bg .text .icon, .slider-wrap .img-bg .text .icon {
+.feature-destination .img-bg .item_text .icon, .slider-wrap .img-bg .item_text .icon {
   color: #fff;
   font-size: 30px;
   position: relative;
@@ -255,25 +255,25 @@ header .navbar.navbar-light .nav-link.active {
   top: 0;
 }
 
-.feature-destination .img-bg .text h2, .slider-wrap .img-bg .text h2 {
+.feature-destination .img-bg .item_text h2, .slider-wrap .img-bg .item_text h2 {
   -webkit-transition: .3s all ease;
   -o-transition: .3s all ease;
   transition: .3s all ease;
   margin: 0;
   padding: 0;
-  font-size: 18px;
+  font-size: 28px;
   font-weight: 400;
   color: #fff;
   top: 0px;
   position: relative;
 }
 
-.feature-destination .img-bg .text p, .slider-wrap .img-bg .text p {
+.feature-destination .img-bg .item_text p, .slider-wrap .img-bg .item_text p {
   color: #fff;
   opacity: 0;
   top: 10px;
   visibility: hidden;
-  font-size: 13px;
+  font-size: 18px;
   position: relative;
   -webkit-transition: .3s all ease;
   -o-transition: .3s all ease;
@@ -286,15 +286,15 @@ header .navbar.navbar-light .nav-link.active {
   box-shadow: 2px 0 20px 0 rgba(0, 0, 0, 0.4);
 }
 
-.feature-destination .img-bg:hover .text .icon, .feature-destination .img-bg:focus .text .icon, .slider-wrap .img-bg:hover .text .icon, .slider-wrap .img-bg:focus .text .icon {
+.feature-destination .img-bg:hover .item_text .icon, .feature-destination .img-bg:focus .item_text .icon, .slider-wrap .img-bg:hover .item_text .icon, .slider-wrap .img-bg:focus .item_text .icon {
   top: -10px;
 }
 
-.feature-destination .img-bg:hover .text h2, .feature-destination .img-bg:focus .text h2, .slider-wrap .img-bg:hover .text h2, .slider-wrap .img-bg:focus .text h2 {
+.feature-destination .img-bg:hover .item_text h2, .feature-destination .img-bg:focus .item_text h2, .slider-wrap .img-bg:hover .item_text h2, .slider-wrap .img-bg:focus .item_text h2 {
   top: -10px;
 }
 
-.feature-destination .img-bg:hover .text p, .feature-destination .img-bg:focus .text p, .slider-wrap .img-bg:hover .text p, .slider-wrap .img-bg:focus .text p {
+.feature-destination .img-bg:hover .item_text p, .feature-destination .img-bg:focus .item_text p, .slider-wrap .img-bg:hover .item_text p, .slider-wrap .img-bg:focus .item_text p {
   top: 0;
   opacity: .5;
   visibility: visible;

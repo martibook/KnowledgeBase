@@ -233,6 +233,11 @@ html {
     background-position: center center
 }
 
+.img-bg {
+    background-image: url('../images/item_bg.jpg');
+}
+
+
 .s006 {
     min-height: 100vh;
     display: -ms-flexbox;
