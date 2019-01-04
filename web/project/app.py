@@ -2,6 +2,7 @@ from flask import Flask, session, request, redirect, url_for
 from flask import render_template
 from web.project.data import SearchForm, CreateForm, init_db, Knowledge_Tuple, Addr_Knowledge_Tuple
 from web.project.data import Knowledge, Users
+from flask import jsonify
 
 
 app = Flask(__name__)
@@ -13,6 +14,14 @@ DB_Session = init_db()
 def index():
     form = SearchForm()
     return render_template('index.html', form=form)
+
+
+@app.route('/users')
+def users():
+    db_session = DB_Session()
+    users = db_session.query(Users).all()
+    usernames = [u.username for u in users]
+    return jsonify(usernames)
 
 
 @app.route('/search', methods=['POST'])
@@ -84,7 +93,7 @@ def operation(act):
 
     if form.validate_on_submit():
 
-        if not check_password_valid(form.password.data):
+        if not check_password_valid(form, act):
             error = {
                 'cover': "Ohh.. You Don't Have The Correct Password ~",
                 'info': "Well this is a space which welcomes everyone to visit while only someones can USE it :)"
@@ -107,21 +116,41 @@ def operation(act):
         return present_error(error)
 
 
-def check_password_valid(password):
+def check_password_valid(form, act):
     db_session = DB_Session()
-    users = db_session.query(Users).all()
-    auth_passwords = [u.password for u in users]
-    if password in auth_passwords:
-        return True
+    password = form.password.data
+    if act == 'create':
+        users = db_session.query(Users).all()
+        if password in [u.password for u in users]:
+            return True
+        else:
+            return False
+    elif act == 'update':
+        user = get_username_by_password(form.password.data)
+
+        old_cover, old_cat = session['cover'], session['cat']
+        old_kn = db_session.query(Knowledge).filter(Knowledge.cover==old_cover).filter(Knowledge.cat==old_cat).first()
+        if user and old_kn and user == old_kn.owner:
+            return True
+        else:
+            return False
     else:
         return False
+
+
+def get_username_by_password(password):
+    db_session = DB_Session()
+    user = db_session.query(Users).filter(Users.password==password).first()
+    if user:
+        return user.username
 
 
 def operation_create(form):
     db_session = DB_Session()
     try:
         cover, cat, content = form.cover.data, form.cat.data, form.content.data
-        knowledge = Knowledge(cover=cover, cat=cat, content=content)
+        owner = get_username_by_password(form.password.data)
+        knowledge = Knowledge(cover=cover, cat=cat, content=content, owner=owner)
         db_session.add(knowledge)
         db_session.commit()
         return redirect(url_for('item', cover=cover, cat=cat))
@@ -142,7 +171,8 @@ def operation_update(form):
         db_session.delete(old_knowledge)
 
         cover, cat, content = form.cover.data, form.cat.data, form.content.data
-        knowledge = Knowledge(cover=cover, cat=cat, content=content)
+        owner = get_username_by_password(form.password.data)
+        knowledge = Knowledge(cover=cover, cat=cat, content=content, owner=owner)
         db_session.add(knowledge)
 
         db_session.commit()
@@ -184,3 +214,6 @@ def present_error(error):
     form = SearchForm()
     return render_template('error.html', error=error, form=form)
 
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', debug=True)

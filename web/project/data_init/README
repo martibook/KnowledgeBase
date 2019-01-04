@@ -1,0 +1,17 @@
+Here you should put a file named 'users.txt'
+
+It should contain somelines like this:
+
+bear    raeb
+fish    hsif
+...
+
+
+this means that you have two users named 'bear' and 'fish',
+and user 'bear' has the password 'raeb'
+while user 'fish' has the password 'hsif'
+
+
+only someone holding the passwords could create knowledge in this knowledge base (knbase)
+
+
