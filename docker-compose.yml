@@ -9,20 +9,30 @@ services:
     depends_on:
       - db
     links:
-    - db
-    ports:
-    - "8000:8000"
-#    expose:
-#      - "8000"
+      - db
+    expose:
+      - "8000"
     command: gunicorn -w 2 -b :8000 project.app:app
 
   db:
     restart: always
     image: postgres
     ports:
-    - "5432:5432"
+      - "5432:5432"
     environment:
       POSTGRES_USER: "marti"
       PGDATA: /var/lib/postgresql/data/pgdata
     volumes:
       - /Users/marti/server/pg_data/data:/var/lib/postgresql/data/pgdata
+
+  nginx:
+   restart: always
+   build: ./nginx
+   ports:
+     - "80:80"
+   volumes:
+     - /www/static
+   volumes_from:
+     - web
+   depends_on:
+     - web

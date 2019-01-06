@@ -1,15 +1,28 @@
-# knbase
+# KNBASE
 Online Knowledge Base(someplace for storing unstructured personal notes)
 
 
-# directly run server
+# Ways to launch
 
-run locally
-
-export MODE=local && export FLASK_APP=web.project.app.py && export export FLASK_DEBUG=1 && flask run
-
-
-run in docker
+##run locally
 
 docker-compose up --build
+
+
+##run in digitalocean droplet
+
+docker-machine create \
+    --driver=generic \
+    --generic-ip-address=IP_ADDRESS \
+    --generic-ssh-user=USERNAME \
+    --generic-ssh-key=PATH_TO_SSH_KEY \
+        MACHINE_NAME
+        
+eval "$(docker-machine env MACHINE_NAME)"
+
+docker-compose build
+
+docker-compose up -d
+
+
 
