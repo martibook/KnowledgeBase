@@ -1,32 +1,32 @@
 # KnBase
 Online Knowledge Base(someplace for storing unstructured personal notes)
 
-![ index ](https://github.com/MartiBook/knbase/raw/master/previews/index.gif)
+![ index ](https://github.com/MartiBook/knbase/raw/master/previews/index.png)
 
 
 # What Could Be Done With KnBase
 
 # create a piece of note
-![ create a piece of note ](https://github.com/MartiBook/knbase/raw/master/previews/create.gif)
+![ create a piece of note ](https://github.com/MartiBook/knbase/raw/master/previews/create.png)
 
 # view notes you've created
-![ view notes you've created ](https://github.com/MartiBook/knbase/raw/master/previews/detail.gif)
+![ view notes you've created ](https://github.com/MartiBook/knbase/raw/master/previews/detail.png)
 
 # search for notes by keywords
-![ search for notes by keywords ](https://github.com/MartiBook/knbase/raw/master/previews/search.gif)
+![ search for notes by keywords ](https://github.com/MartiBook/knbase/raw/master/previews/search.png)
 
 # get all notes related to the keywords
-![ get all notes related to the keywords ](https://github.com/MartiBook/knbase/raw/master/previews/result.gif)
+![ get all notes related to the keywords ](https://github.com/MartiBook/knbase/raw/master/previews/result.png)
 
 
 # Ways to launch
 
-##run locally
+## run locally
 
 docker-compose up --build
 
 
-##run in digitalocean droplet
+## run in digitalocean droplet
 
 docker-machine create \
     --driver=generic \
