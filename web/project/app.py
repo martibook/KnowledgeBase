@@ -1,7 +1,7 @@
 from flask import Flask, session, request, redirect, url_for
 from flask import render_template
-from web.project.data import SearchForm, CreateForm, init_db, Knowledge_Tuple, Addr_Knowledge_Tuple
-from web.project.data import Knowledge, Users
+from project.data import SearchForm, CreateForm, init_db, Knowledge_Tuple, Addr_Knowledge_Tuple
+from project.data import Knowledge, Users
 from flask import jsonify
 
 
