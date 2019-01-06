@@ -46,11 +46,11 @@ docker_database_config = {
     'protocol': 'postgresql'
 }
 
-mode = os.environ['MODE']
-if mode == 'local':
-    database_uri = '{protocol}:///{database}'.format(**database_config)
-else:
+mode = os.environ['MODE'] if 'MODE' in os.environ else 'docker'
+if mode == 'docker':
     database_uri = '{protocol}://{user}@{host}/{database}'.format(**docker_database_config)
+else:
+    database_uri = '{protocol}:///{database}'.format(**database_config)
 
 
 engine = create_engine(database_uri, convert_unicode=True)

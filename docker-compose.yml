@@ -14,7 +14,7 @@ services:
     - "8000:8000"
 #    expose:
 #      - "8000"
-#    command: /usr/local/bin/gunicorn -w 2 -b :8000 web.project:app
+    command: gunicorn -w 2 -b :8000 project.app:app
 
   db:
     restart: always
